@@ -1,4 +1,4 @@
-import os.path
+from os import path
 from converter.converter_3ds import Converter3DS
 from converter.converter_wiiu import ConverterWiiU
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QFormLayout, QFileDialog, QTextEdit, QMessageBox
