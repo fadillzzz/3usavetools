@@ -1,4 +1,4 @@
-import os.path
+from os import path, access, W_OK
 from converter.converter_3ds import Converter3DS
 from converter.converter_wiiu import ConverterWiiU
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QFormLayout, QFileDialog, QTextEdit, QMessageBox
@@ -64,7 +64,7 @@ class App():
             self.error = QMessageBox()
             self.error.setText('Invalid save file')
 
-        if not os.access(path.dirname(dstPath), os.W_OK):
+        if not access(path.dirname(dstPath), W_OK):
             self.error = QMessageBox()
             self.error.setText('Output path not writable')
 
