@@ -15,3 +15,6 @@ Converting a 3DS save file into Wii U format:
 
 Converting a Wii U save file into 3DS format:
 `python convert_to_3ds.py path_to_wii_u_user1 output_3ds_user1`
+
+There's also a Qt GUI version available:
+`python app.py`
