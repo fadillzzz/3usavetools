@@ -8166,5 +8166,20 @@ saveFileSwap = [
     [30152, 30156],
     [30156, 30158],
     [34784, 34788],
-    [34788, 34792]
+    [34788, 34792],
 ]
+
+# Guild card weapon usage
+# Moga + Tanzia + Arena (12 * 2 bytes each)
+for i in range(31520, 31592, 2):
+    saveFileSwap.append([i, i + 2])
+
+# Guild card quest counter
+for i in range(31268, 31279, 2):
+    saveFileSwap.append([i, i +2])
+
+# Unity amount
+saveFileSwap.append([31392, 31396])
+
+# Street pass tags
+saveFileSwap.append([31396, 31400])
