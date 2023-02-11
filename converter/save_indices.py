@@ -6193,10 +6193,6 @@ saveFileSwap += [
     [34788, 34792],
 ]
 
-# Guild card weapon usage
-# Moga + Tanzia + Arena (12 * 2 bytes each)
-for i in range(0x7B20, 0x7B68, 2):
-    saveFileSwap.append([i, i + 2])
 
 # Guild card quest counter
 for i in range(0x7A24, 0x7A2F, 2):
@@ -6207,6 +6203,25 @@ saveFileSwap.append([0x7AA0, 0x7AA4])
 
 # Street pass tags
 saveFileSwap.append([0x7AA4, 0x7AA8])
+
+# Guild card weapon usage
+# Moga + Tanzia + Arena (12 * 2 bytes each)
+for i in range(0x7B20, 0x7B68, 2):
+    saveFileSwap.append([i, i + 2])
+
+# Unknown
+saveFileSwap.append([0x7B68, 0x7B6C])
+
+# Hunter's Journal
+for i in range(0x7B6C, 0x810D, 0xA0):
+    # Year
+    saveFileSwap.append([i + 2, i + 4])
+    # Event type
+    saveFileSwap.append([i + 4, i + 6])
+    # Unknown
+    saveFileSwap.append([i + 6, i + 8])
+    for j in range(0, 6):
+        saveFileSwap.append([i + 12 + j * 4, i + 16 + j * 4])
 
 monsterDiscoveryState = []
 
