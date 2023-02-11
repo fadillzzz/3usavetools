@@ -6207,3 +6207,33 @@ saveFileSwap.append([0x7AA0, 0x7AA4])
 
 # Street pass tags
 saveFileSwap.append([0x7AA4, 0x7AA8])
+
+monsterDiscoveryState = []
+
+# Monster log (Sizes + slay/capture)
+for i in range(0x81B4, 0x83A7, 10):
+    # Slay
+    saveFileSwap.append([i, i + 2])
+    # Capture
+    saveFileSwap.append([i + 2, i + 4])
+    # Size index (biggest)
+    saveFileSwap.append([i + 4, i + 6])
+    # Size index (smallest)
+    saveFileSwap.append([i + 6, i + 8])
+    # Crown/Discovery flags, cannot be converted through endian swap
+    # 3DS
+    # 0           0       0       0       0000
+    # Discovered  Silver  Gold    Mini    Unused
+    # 1 Discovered (no crown)
+    # 2 Silver
+    # 4 Gold
+    # 8 Mini
+
+    # Wii U
+    # 0           0       0       0       0       000
+    # Discovered  Gold    Silver  Unused  Mini    Unused
+    # 80 Discovered
+    # 40 Gold
+    # 20 Silver
+    # 08 Mini
+    monsterDiscoveryState.append(i + 8)
