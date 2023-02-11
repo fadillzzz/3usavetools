@@ -1,13 +1,30 @@
-saveFileSwap = [
-    [28, 32],
-    [32, 36],
-    [36, 40],
-    [42, 44],
-    [44, 48],
-    [48, 50],
-    [50, 52],
-    [52, 54],
-    [58, 60],
+saveFileSwap = []
+
+# Unknown
+saveFileSwap.append([0x1C, 0x20])
+
+# Money
+saveFileSwap.append([0x20, 0x24])
+
+# Playtime in seconds
+saveFileSwap.append([0x24, 0x28])
+
+# Equipped weapon type
+#saveFileSwap.append([0x28, 0x29])
+
+# Unknown
+#saveFileSwap.append([0x29, 0x2A])
+
+# Equipped weapon ID
+saveFileSwap.append([0x2A, 0x2C])
+
+# Unknown
+for i in range(0x2C, 0x36, 2):
+    saveFileSwap.append([i, i + 2])
+saveFileSwap.append([0x3A, 0x3C])
+
+# To do: Reorganise this and label them properly :(
+saveFileSwap += [
     [60, 64],
     [64, 66],
     [66, 68],
@@ -8171,15 +8188,15 @@ saveFileSwap = [
 
 # Guild card weapon usage
 # Moga + Tanzia + Arena (12 * 2 bytes each)
-for i in range(31520, 31592, 2):
+for i in range(0x7B20, 0x7B68, 2):
     saveFileSwap.append([i, i + 2])
 
 # Guild card quest counter
-for i in range(31268, 31279, 2):
+for i in range(0x7A24, 0x7A2F, 2):
     saveFileSwap.append([i, i +2])
 
 # Unity amount
-saveFileSwap.append([31392, 31396])
+saveFileSwap.append([0x7AA0, 0x7AA4])
 
 # Street pass tags
-saveFileSwap.append([31396, 31400])
+saveFileSwap.append([0x7AA4, 0x7AA8])
