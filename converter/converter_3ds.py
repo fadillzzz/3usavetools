@@ -25,3 +25,28 @@ class Converter3DS(BaseConverter):
             newState[0] += 8
 
         return newState
+
+    def convertArenaRecord(self, firstHalf, secondHalf):
+        firstDropped = firstHalf & 0x1
+        secondDropped = secondHalf & 0x1
+
+        q1 = firstHalf >> 8
+        q2 = firstHalf << 8
+        convertedFirst = q2 | q1
+        bitWrap = convertedFirst & 0x1
+        convertedFirst = convertedFirst >> 1
+        convertedFirst = convertedFirst & ~(1 << (8 - 1))
+        convertedFirst = (convertedFirst | (0x8000 * bitWrap)) & 0xFFFF
+
+        q1 = secondHalf >> 8
+        q2 = secondHalf << 8
+        convertedSecond = q2 | q1
+        bitWrap = convertedSecond & 0x1
+        convertedSecond = convertedSecond >> 1
+        convertedSecond = convertedSecond & ~(1 << (8 - 1))
+        convertedSecond = (convertedSecond | (0x8000 * bitWrap)) & 0xFFFF
+
+        convertedFirst = convertedFirst | (0x80 * secondDropped)
+        convertedSecond = convertedSecond | (0x80 * firstDropped)
+
+        return (convertedFirst, convertedSecond)

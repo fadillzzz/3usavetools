@@ -25,3 +25,21 @@ class ConverterWiiU(BaseConverter):
             newState[0] += 0x8
 
         return newState
+
+    def convertArenaRecord(self, firstHalf, secondHalf):
+        q1 = firstHalf >> 8
+        q2 = firstHalf << 8
+        convertedFirst = q2 | q1
+        firstDropped = convertedFirst & 0x8000
+        convertedFirst = (convertedFirst << 1) & 0xFFFF
+
+        q1 = secondHalf >> 8
+        q2 = secondHalf << 8
+        convertedSecond = q2 | q1
+        secondDropped = convertedSecond & 0x8000
+        convertedSecond = (convertedSecond << 1) & 0xFFFF
+
+        convertedFirst = convertedFirst | int(bool(secondDropped))
+        convertedSecond = convertedSecond | int(bool(firstDropped))
+
+        return (convertedFirst, convertedSecond)

@@ -6239,7 +6239,7 @@ for i in range(0x81B4, 0x83A7, 10):
     # 3DS
     # 0           0       0       0       0000
     # Discovered  Silver  Gold    Mini    Unused
-    # 1 Discovered (no crown)
+    # 1 Discovered
     # 2 Silver
     # 4 Gold
     # 8 Mini
@@ -6252,3 +6252,8 @@ for i in range(0x81B4, 0x83A7, 10):
     # 20 Silver
     # 08 Mini
     monsterDiscoveryState.append(i + 8)
+
+arenaRecord = []
+# Arena record
+for i in range(0x83A8, 0x84A0, 4):
+    arenaRecord.append(i)
