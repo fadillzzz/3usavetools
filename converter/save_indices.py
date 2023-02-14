@@ -6193,6 +6193,15 @@ saveFileSwap += [
     [34788, 34792],
 ]
 
+# Guild card title
+# Moving offset by 4 instead of the expected 2 because it doesn't look like the
+# middle part of the title requires endian swap
+for i in range(0x7A02, 0x7A08, 4):
+    saveFileSwap.append([i, i + 2])
+
+# Unknown
+saveFileSwap.append([0x7A08, 0x7A0A])
+
 
 # Guild card quest counter
 for i in range(0x7A24, 0x7A2F, 2):
