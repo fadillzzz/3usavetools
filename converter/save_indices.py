@@ -6202,7 +6202,6 @@ for i in range(0x7A02, 0x7A08, 4):
 # Unknown
 saveFileSwap.append([0x7A08, 0x7A0A])
 
-
 # Guild card quest counter
 for i in range(0x7A24, 0x7A2F, 2):
     saveFileSwap.append([i, i +2])
@@ -6231,6 +6230,10 @@ for i in range(0x7B6C, 0x810D, 0xA0):
     saveFileSwap.append([i + 6, i + 8])
     for j in range(0, 6):
         saveFileSwap.append([i + 12 + j * 4, i + 16 + j * 4])
+
+# Awards
+saveFileSwap.append([0x81AC, 0x81B0])
+saveFileSwap.append([0x81B0, 0x81B4])
 
 monsterDiscoveryState = []
 
