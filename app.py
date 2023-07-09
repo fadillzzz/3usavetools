@@ -1,7 +1,7 @@
 from os import path, access, W_OK
 from converter.converter_3ds import Converter3DS
 from converter.converter_wiiu import ConverterWiiU
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QFormLayout, QFileDialog, QTextEdit, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QFormLayout, QFileDialog, QTextEdit, QMessageBox, QLabel
 
 class App():
     def start(self):
@@ -13,6 +13,9 @@ class App():
         self.window.setWindowTitle('MH3U Save Converter')
         layout = QFormLayout()
 
+        disclaimerLabel = QLabel("<b>Not perfect, backup you savefiles first!</b>")
+        layout.addRow(disclaimerLabel)
+
         loadSrcButton = QPushButton('Load save file')
         loadSrcButton.clicked.connect(self.loadSrc)
         self.srcPath = QTextEdit(self.window)
@@ -22,6 +25,9 @@ class App():
         setOutputButton.clicked.connect(self.setDst)
         self.dstPath = QTextEdit(self.window)
         self.dstPath.setFixedHeight(24)
+
+        disclaimerLabel = QLabel("Automatically detect if input file is 3DS or Wii U")
+        layout.addRow(disclaimerLabel)
 
         convertButton = QPushButton('Convert')
         convertButton.clicked.connect(self.convert)
