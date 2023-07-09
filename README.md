@@ -10,6 +10,9 @@ This is very much a quick and dirty implementation and you should expect some da
 
 Requires Python to be installed on your computer.
 
+Install Python requirements:
+`pip install -r requirements.txt`
+
 Converting a 3DS save file into Wii U format:
 `python convert_to_wiiu.py path_to_3ds_user1 output_wii_u_user1`
 
